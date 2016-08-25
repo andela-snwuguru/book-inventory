@@ -1,4 +1,7 @@
 *.pyc
+
 **/*.pyc
+
 **/**/*.pyc
+
 *.sqlite3
