@@ -22,8 +22,8 @@ class BookListView(ListView):
         category_id = self.request.GET.get('cat')
         if category_id:
             category = Category.objects.get(pk=category_id)
-            return Book.objects.filter(category=category, name__contains=q)
-        return Book.objects.filter(name__contains=q)
+            return Book.objects.filter(category=category, name__icontains=q)
+        return Book.objects.filter(name__icontains=q)
 
 
 class BookCreateView(CreateView):
