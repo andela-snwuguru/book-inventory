@@ -2,4 +2,29 @@
 {% load staticfiles %}
 {% block content %}
 <h1>Books</h1>
+<div class="row">
+    <form>
+        <select name="cat">
+            <option value="">All</option>
+            {% if categories %}
+                {% for category in categories %}
+                    <option
+                    value="{{category.id}}"
+                    {% if category_id == category.id %}
+                     selected="selected"
+                     {% endif %}
+                    >{{category.name}}</option>
+                {% endfor %}
+            {% endif %}
+        </select>
+        <input type="text" name="q" placeholder="Search for books by name" value="{{ q }}">
+        <input type="submit" value="Search">
+    </form>
+</div>
+<p>
+    <a href="/books/create/">Add New Book</a>
+</p>
+{% for book in object_list %}
+    <p>{{book.name}} - <small>{{book.category.name}}</small></p>
+{% endfor %}
 {% endblock content %}
