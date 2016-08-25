@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-<h1>Books</h1>
 <div class="row">
-    <form>
-        <select name="cat">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s3">
+          <select name="cat">
             <option value="">All</option>
             {% if categories %}
                 {% for category in categories %}
@@ -17,14 +18,27 @@
                 {% endfor %}
             {% endif %}
         </select>
-        <input type="text" name="q" placeholder="Search for books by name" value="{{ q }}">
-        <input type="submit" value="Search">
+        </div>
+        <div class="input-field col s4">
+          <input type="text" name="q" placeholder="Search for books by name" value="{{ q }}">
+        </div>
+        <div class="input-field col s4">
+          <input type="submit" value="Search" class="btn">
+        </div>
+      </div>
     </form>
-</div>
+  </div>
+
+
+<div class="row">
 <p>
-    <a href="/books/create/">Add New Book</a>
+<a class="btn-floating btn-large waves-effect waves-light red right" href="/books/create/"><i class="material-icons">add</i></a>
 </p>
+<h4>Books</h4>
+<hr/>
+ <ul class="collection">
 {% for book in object_list %}
-    <p>{{book.name}} - <small>{{book.category.name}}</small></p>
+<li class="collection-item dismissable"><div>{{book.name}} <span class="secondary-content">{{book.category.name}}</span></div></li>
 {% endfor %}
+</div>
 {% endblock content %}

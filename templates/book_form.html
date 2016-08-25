@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-<h1>Create Books</h1>
+<h4>Create Books</h4>
 <form method="post">
 {% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Save">
+<input type="submit" value="Save" class="btn right">
 </form>
 {% endblock content %}

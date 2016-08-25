@@ -11,9 +11,7 @@ class BookListView(ListView):
     def get_context_data(self, **kwargs):
         q = self.request.GET.get('q', '')
         category_id = self.request.GET.get('cat', '')
-        print category_id
         context = super(BookListView, self).get_context_data(**kwargs)
-        print q, category_id
         context['q'] = q
         context['category_id'] = category_id
         context['categories'] = Category.objects.all()
